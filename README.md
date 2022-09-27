@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-asdf-helper [![Build](https://github.com/ngyewch/asdf-asdf-helper/actions/workflows/build.yml/badge.svg)](https://github.com/ngyewch/asdf-asdf-helper/actions/workflows/build.yml) [![Lint](https://github.com/ngyewch/asdf-asdf-helper/actions/workflows/lint.yml/badge.svg)](https://github.com/ngyewch/asdf-asdf-helper/actions/workflows/lint.yml)
+# asdf-helper-plugin [![Build](https://github.com/ngyewch/asdf-helper-plugin/actions/workflows/build.yml/badge.svg)](https://github.com/ngyewch/asdf-helper-plugin/actions/workflows/build.yml) [![Lint](https://github.com/ngyewch/asdf-helper-plugin/actions/workflows/lint.yml/badge.svg)](https://github.com/ngyewch/asdf-helper-plugin/actions/workflows/lint.yml)
 
 
 [asdf-helper](https://github.com/ngyewch/asdf-helper) plugin for the [asdf version manager](https://asdf-vm.com).
@@ -28,7 +28,7 @@ Plugin:
 ```shell
 asdf plugin add asdf-helper
 # or
-asdf plugin add asdf-helper https://github.com/ngyewch/asdf-asdf-helper.git
+asdf plugin add asdf-helper https://github.com/ngyewch/asdf-helper-plugin.git
 ```
 
 asdf-helper:
@@ -54,7 +54,7 @@ install & manage versions.
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
-[Thanks goes to these contributors](https://github.com/ngyewch/asdf-asdf-helper/graphs/contributors)!
+[Thanks goes to these contributors](https://github.com/ngyewch/asdf-helper-plugin/graphs/contributors)!
 
 # License
 
