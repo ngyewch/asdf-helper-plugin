@@ -105,7 +105,6 @@ download_release() {
   url="$GH_REPO/releases/download/v${version}/asdf-helper_${version}_$(get_platform)_$(get_arch).$(get_ext)"
 
   echo "* Downloading $TOOL_NAME release $version..."
-  echo "${url}"
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
