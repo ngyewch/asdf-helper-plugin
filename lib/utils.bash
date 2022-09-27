@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for asdf-helper.
 GH_REPO="https://github.com/ngyewch/asdf-helper"
 TOOL_NAME="asdf-helper"
 TOOL_TEST="asdf-helper version"
@@ -31,29 +30,27 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-  # Change this function if asdf-helper has other means of determining installable versions.
   list_github_tags
 }
 
 get_arch() {
   arch=$(uname -m | tr '[:upper:]' '[:lower:]')
   case ${arch} in
-    arm64)
-      arch='arm64'
-      ;;
-    arm6)
-      arch='arm6'
-      ;;
-    x86_64)
-      arch='amd64'
-      ;;
-    aarch64)
-      arch='arm64'
-      ;;
-    i386)
-      arch='i386'
-      ;;
+  arm64)
+    arch='arm64'
+    ;;
+  arm6)
+    arch='arm6'
+    ;;
+  x86_64)
+    arch='amd64'
+    ;;
+  aarch64)
+    arch='arm64'
+    ;;
+  i386)
+    arch='i386'
+    ;;
   esac
 
   echo ${arch}
@@ -62,15 +59,15 @@ get_arch() {
 get_platform() {
   plat=$(uname | tr '[:upper:]' '[:lower:]')
   case ${plat} in
-    darwin)
-      plat='darwin'
-      ;;
-    linux)
-      plat='linux'
-      ;;
-    windows)
-      plat='windows'
-      ;;
+  darwin)
+    plat='darwin'
+    ;;
+  linux)
+    plat='linux'
+    ;;
+  windows)
+    plat='windows'
+    ;;
   esac
 
   echo ${plat}
@@ -79,18 +76,18 @@ get_platform() {
 get_ext() {
   plat=$(uname | tr '[:upper:]' '[:lower:]')
   case ${plat} in
-    darwin)
-      ext='zip'
-      ;;
-    linux)
-      ext='zip'
-      ;;
-    windows)
-      ext='zip'
-      ;;
-    *)
-      ext='zip'
-      ;;
+  darwin)
+    ext='zip'
+    ;;
+  linux)
+    ext='zip'
+    ;;
+  windows)
+    ext='zip'
+    ;;
+  *)
+    ext='zip'
+    ;;
   esac
 
   echo ${ext}
@@ -101,7 +98,6 @@ download_release() {
   version="$1"
   filename="$2"
 
-  # TODO: Adapt the release URL convention for asdf-helper
   url="$GH_REPO/releases/download/v${version}/asdf-helper_${version}_$(get_platform)_$(get_arch).$(get_ext)"
 
   echo "* Downloading $TOOL_NAME release $version..."
