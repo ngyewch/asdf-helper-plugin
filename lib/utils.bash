@@ -36,13 +36,73 @@ list_all_versions() {
   list_github_tags
 }
 
+get_arch() {
+  arch=$(uname -m | tr '[:upper:]' '[:lower:]')
+  case ${arch} in
+    arm64)
+      arch='arm64'
+      ;;
+    arm6)
+      arch='arm6'
+      ;;
+    x86_64)
+      arch='amd64'
+      ;;
+    aarch64)
+      arch='arm64'
+      ;;
+    i386)
+      arch='i386'
+      ;;
+  esac
+
+  echo ${arch}
+}
+
+get_platform() {
+  plat=$(uname | tr '[:upper:]' '[:lower:]')
+  case ${plat} in
+    darwin)
+      plat='darwin'
+      ;;
+    linux)
+      plat='linux'
+      ;;
+    windows)
+      plat='windows'
+      ;;
+  esac
+
+  echo ${plat}
+}
+
+get_ext() {
+  plat=$(uname | tr '[:upper:]' '[:lower:]')
+  case ${plat} in
+    darwin)
+      ext='zip'
+      ;;
+    linux)
+      ext='zip'
+      ;;
+    windows)
+      ext='zip'
+      ;;
+    *)
+      ext='zip'
+      ;;
+  esac
+
+  echo ${ext}
+}
+
 download_release() {
   local version filename url
   version="$1"
   filename="$2"
 
   # TODO: Adapt the release URL convention for asdf-helper
-  url="$GH_REPO/archive/v${version}.tar.gz"
+  url="$GH_REPO/releases/download/v${version}/asdf-helper_${version}_$(get_platform)_$(get_arch).$(get_ext)"
 
   echo "* Downloading $TOOL_NAME release $version..."
   echo "${url}"
