@@ -16,18 +16,13 @@
 
 # Dependencies
 
-**TODO: adapt this section**
-
-- `bash`, `curl`, `tar`: generic POSIX utilities.
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
+- `bash`, `curl`, `tar`, `unzip`, `git`
 
 # Install
 
 Plugin:
 
 ```shell
-asdf plugin add asdf-helper
-# or
 asdf plugin add asdf-helper https://github.com/ngyewch/asdf-helper-plugin.git
 ```
 
