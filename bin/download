@@ -72,6 +72,7 @@ get_ext() {
 
 # TODO: Adapt this to proper extension and adapt extracting strategy.
 release_file="$ASDF_DOWNLOAD_PATH/${TOOL_NAME}_${ASDF_INSTALL_VERSION}_$(get_platform)_$(get_arch).$(get_ext)"
+echo $release_file
 
 # Download tar.gz file to the download directory
 download_release "$ASDF_INSTALL_VERSION" "$release_file"
