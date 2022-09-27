@@ -10,14 +10,77 @@ source "${plugin_dir}/lib/utils.bash"
 
 mkdir -p "$ASDF_DOWNLOAD_PATH"
 
+get_arch() {
+  arch=$(uname -m | tr '[:upper:]' '[:lower:]')
+  case ${arch} in
+    arm64)
+      arch='arm64'
+      ;;
+    arm6)
+      arch='arm6'
+      ;;
+    x86_64)
+      arch='amd64'
+      ;;
+    aarch64)
+      arch='arm64'
+      ;;
+    i386)
+      arch='i386'
+      ;;
+  esac
+
+  echo ${arch}
+}
+
+get_platform() {
+  plat=$(uname | tr '[:upper:]' '[:lower:]')
+  case ${plat} in
+    darwin)
+      plat='darwin'
+      ;;
+    linux)
+      plat='linux'
+      ;;
+    windows)
+      plat='windows'
+      ;;
+  esac
+
+  echo ${plat}
+}
+
+get_ext() {
+  plat=$(uname | tr '[:upper:]' '[:lower:]')
+  case ${plat} in
+    darwin)
+      ext='zip'
+      ;;
+    linux)
+      ext='zip'
+      ;;
+    windows)
+      ext='zip'
+      ;;
+    *)
+      ext='zip'
+      ;;
+  esac
+
+  echo ${ext}
+}
+
 # TODO: Adapt this to proper extension and adapt extracting strategy.
-release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME-$ASDF_INSTALL_VERSION.tar.gz"
+release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME_$(get_platform)_$(get_arch)_$ASDF_INSTALL_VERSION.$(get_ext)"
 
 # Download tar.gz file to the download directory
 download_release "$ASDF_INSTALL_VERSION" "$release_file"
 
 #  Extract contents of tar.gz file into the download directory
-tar -xzf "$release_file" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $release_file"
+#tar -xzf "$release_file" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $release_file"
+
+#  Extract contents of zip file into the download directory
+unzip "$release_file" -d "$ASDF_DOWNLOAD_PATH" || fail "Could not extract $release_file"
 
 # Remove the tar.gz file since we don't need to keep it
 rm "$release_file"
